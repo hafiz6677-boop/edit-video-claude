@@ -1,0 +1,1342 @@
+{
+ "fps": 30,
+ "total": 1800,
+ "segments": [
+  {
+   "id": "A",
+   "src": "v2",
+   "s": 3.93,
+   "e": 12.696666666666667,
+   "start": 0,
+   "frames": 263,
+   "tin": "flash",
+   "kb": [
+    1.0,
+    1.06,
+    0.5,
+    0.55
+   ],
+   "captions": [
+    {
+     "f0": 0,
+     "f1": 40,
+     "words": [
+      {
+       "t": "Akak,",
+       "k": false,
+       "f": 0
+      },
+      {
+       "t": "full",
+       "k": true,
+       "f": 10
+      },
+      {
+       "t": "diamond!",
+       "k": true,
+       "f": 19
+      }
+     ]
+    },
+    {
+     "f0": 40,
+     "f1": 84,
+     "words": [
+      {
+       "t": "Material",
+       "k": false,
+       "f": 40
+      },
+      {
+       "t": "cotton",
+       "k": true,
+       "f": 53
+      },
+      {
+       "t": "Japanese,",
+       "k": true,
+       "f": 64
+      }
+     ]
+    },
+    {
+     "f0": 84,
+     "f1": 106,
+     "words": [
+      {
+       "t": "bawal",
+       "k": true,
+       "f": 84
+      },
+      {
+       "t": "asli",
+       "k": true,
+       "f": 94
+      }
+     ]
+    },
+    {
+     "f0": 136,
+     "f1": 218,
+     "words": [
+      {
+       "t": "Dia",
+       "k": false,
+       "f": 136
+      },
+      {
+       "t": "design",
+       "k": false,
+       "f": 146
+      },
+      {
+       "t": "laser",
+       "k": true,
+       "f": 161
+      },
+      {
+       "t": "cut",
+       "k": true,
+       "f": 175
+      },
+      {
+       "t": "2",
+       "k": true,
+       "f": 185
+      },
+      {
+       "t": "layer,",
+       "k": true,
+       "f": 192
+      }
+     ]
+    },
+    {
+     "f0": 218,
+     "f1": 263,
+     "words": [
+      {
+       "t": "full",
+       "k": true,
+       "f": 218
+      },
+      {
+       "t": "diamond",
+       "k": true,
+       "f": 226
+      },
+      {
+       "t": "sampai",
+       "k": true,
+       "f": 237
+      },
+      {
+       "t": "hujung!",
+       "k": true,
+       "f": 247
+      }
+     ]
+    }
+   ],
+   "headlines": [
+    {
+     "f0": 0,
+     "f1": 134,
+     "main": "FULL DIAMOND",
+     "sub": "Material Cotton Japanese",
+     "sfx": "impact",
+     "subDelay": 41
+    },
+    {
+     "f0": 137,
+     "f1": 263,
+     "main": "LASER CUT 2 LAYER",
+     "sub": "Full diamond sampai hujung",
+     "sfx": "pop",
+     "subDelay": 83
+    }
+   ],
+   "punch": [
+    {
+     "f": 218,
+     "z": 1.1,
+     "x": 0.35,
+     "y": 0.7,
+     "shake": false
+    }
+   ],
+   "sparkles": [
+    {
+     "x0": 330,
+     "y0": 1250,
+     "x1": 700,
+     "y1": 1750,
+     "f0": 0,
+     "f1": 92
+    },
+    {
+     "x0": 90,
+     "y0": 1100,
+     "x1": 480,
+     "y1": 1750,
+     "f0": 152,
+     "f1": 263
+    }
+   ]
+  },
+  {
+   "id": "B",
+   "src": "v3",
+   "s": 11.06,
+   "e": 23.093333333333334,
+   "start": 263,
+   "frames": 361,
+   "tin": "whipL",
+   "kb": [
+    1.03,
+    1.0,
+    0.5,
+    0.45
+   ],
+   "captions": [
+    {
+     "f0": 263,
+     "f1": 323,
+     "words": [
+      {
+       "t": "Okay,",
+       "k": false,
+       "f": 263
+      },
+      {
+       "t": "saya",
+       "k": false,
+       "f": 272
+      },
+      {
+       "t": "pakai",
+       "k": false,
+       "f": 281
+      },
+      {
+       "t": "style",
+       "k": true,
+       "f": 292
+      },
+      {
+       "t": "shawl",
+       "k": true,
+       "f": 303
+      }
+     ]
+    },
+    {
+     "f0": 323,
+     "f1": 381,
+     "words": [
+      {
+       "t": "Sebelah",
+       "k": false,
+       "f": 323
+      },
+      {
+       "t": "pendek,",
+       "k": false,
+       "f": 335
+      },
+      {
+       "t": "sebelah",
+       "k": false,
+       "f": 347
+      },
+      {
+       "t": "panjang,",
+       "k": false,
+       "f": 360
+      }
+     ]
+    },
+    {
+     "f0": 381,
+     "f1": 420,
+     "words": [
+      {
+       "t": "akak",
+       "k": false,
+       "f": 381
+      },
+      {
+       "t": "lilit,",
+       "k": false,
+       "f": 389
+      },
+      {
+       "t": "nampak",
+       "k": false,
+       "f": 398
+      },
+      {
+       "t": "tak?",
+       "k": false,
+       "f": 408
+      }
+     ]
+    },
+    {
+     "f0": 420,
+     "f1": 459,
+     "words": [
+      {
+       "t": "Batu",
+       "k": true,
+       "f": 420
+      },
+      {
+       "t": "dia",
+       "k": true,
+       "f": 428
+      },
+      {
+       "t": "lawa",
+       "k": true,
+       "f": 435
+      },
+      {
+       "t": "sangat!",
+       "k": true,
+       "f": 443
+      }
+     ]
+    },
+    {
+     "f0": 459,
+     "f1": 506,
+     "words": [
+      {
+       "t": "Pakai",
+       "k": false,
+       "f": 459
+      },
+      {
+       "t": "style",
+       "k": false,
+       "f": 467
+      },
+      {
+       "t": "biasa",
+       "k": false,
+       "f": 475
+      },
+      {
+       "t": "pun",
+       "k": false,
+       "f": 484
+      },
+      {
+       "t": "cantik,",
+       "k": true,
+       "f": 489
+      }
+     ]
+    },
+    {
+     "f0": 506,
+     "f1": 558,
+     "words": [
+      {
+       "t": "kalau",
+       "k": false,
+       "f": 506
+      },
+      {
+       "t": "nak",
+       "k": false,
+       "f": 519
+      },
+      {
+       "t": "lagi",
+       "k": false,
+       "f": 529
+      },
+      {
+       "t": "wow,",
+       "k": true,
+       "f": 541
+      }
+     ]
+    },
+    {
+     "f0": 558,
+     "f1": 591,
+     "words": [
+      {
+       "t": "pakai",
+       "k": false,
+       "f": 558
+      },
+      {
+       "t": "style",
+       "k": false,
+       "f": 564
+      },
+      {
+       "t": "macam",
+       "k": false,
+       "f": 570
+      },
+      {
+       "t": "mana",
+       "k": false,
+       "f": 576
+      },
+      {
+       "t": "pun,",
+       "k": false,
+       "f": 582
+      }
+     ]
+    },
+    {
+     "f0": 591,
+     "f1": 624,
+     "words": [
+      {
+       "t": "sebab",
+       "k": false,
+       "f": 591
+      },
+      {
+       "t": "dia",
+       "k": false,
+       "f": 598
+      },
+      {
+       "t": "full",
+       "k": true,
+       "f": 603
+      },
+      {
+       "t": "diamond!",
+       "k": true,
+       "f": 610
+      }
+     ]
+    }
+   ],
+   "headlines": [
+    {
+     "f0": 419,
+     "f1": 507,
+     "main": "BATU DIA LAWA SANGAT",
+     "sub": null,
+     "sfx": "pop",
+     "subDelay": 8
+    }
+   ],
+   "punch": [
+    {
+     "f": 420,
+     "z": 1.1,
+     "x": 0.52,
+     "y": 0.62,
+     "shake": false
+    }
+   ],
+   "sparkles": [
+    {
+     "x0": 330,
+     "y0": 900,
+     "x1": 800,
+     "y1": 1650,
+     "f0": 393,
+     "f1": 501
+    }
+   ]
+  },
+  {
+   "id": "C",
+   "src": "v2",
+   "s": 25.62,
+   "e": 28.253333333333334,
+   "start": 624,
+   "frames": 79,
+   "tin": "flash",
+   "kb": [
+    1.0,
+    1.05,
+    0.5,
+    0.5
+   ],
+   "captions": [
+    {
+     "f0": 624,
+     "f1": 679,
+     "words": [
+      {
+       "t": "Bidang",
+       "k": false,
+       "f": 624
+      },
+      {
+       "t": "kita",
+       "k": false,
+       "f": 636
+      },
+      {
+       "t": "bidang",
+       "k": false,
+       "f": 644
+      },
+      {
+       "t": "45",
+       "k": true,
+       "f": 656
+      },
+      {
+       "t": "plus,",
+       "k": true,
+       "f": 662
+      }
+     ]
+    },
+    {
+     "f0": 679,
+     "f1": 703,
+     "words": [
+      {
+       "t": "bawal",
+       "k": true,
+       "f": 679
+      },
+      {
+       "t": "asli",
+       "k": true,
+       "f": 685
+      },
+      {
+       "t": "Japanese.",
+       "k": true,
+       "f": 690
+      }
+     ]
+    }
+   ],
+   "headlines": [
+    {
+     "f0": 625,
+     "f1": 703,
+     "main": "BIDANG 45+",
+     "sub": "Bawal Asli Japanese",
+     "sfx": "pop",
+     "subDelay": 54
+    }
+   ],
+   "punch": [],
+   "sparkles": []
+  },
+  {
+   "id": "D",
+   "src": "v2",
+   "s": 28.25,
+   "e": 32.88333333333333,
+   "start": 703,
+   "frames": 139,
+   "tin": "zoom",
+   "kb": [
+    1.05,
+    1.0,
+    0.55,
+    0.6
+   ],
+   "captions": [
+    {
+     "f0": 703,
+     "f1": 746,
+     "words": [
+      {
+       "t": "Design",
+       "k": false,
+       "f": 703
+      },
+      {
+       "t": "ni",
+       "k": false,
+       "f": 714
+      },
+      {
+       "t": "sangat",
+       "k": true,
+       "f": 720
+      },
+      {
+       "t": "lawa,",
+       "k": true,
+       "f": 731
+      }
+     ]
+    },
+    {
+     "f0": 746,
+     "f1": 802,
+     "words": [
+      {
+       "t": "design",
+       "k": false,
+       "f": 746
+      },
+      {
+       "t": "ni",
+       "k": false,
+       "f": 757
+      },
+      {
+       "t": "kan,",
+       "k": false,
+       "f": 762
+      },
+      {
+       "t": "dia",
+       "k": false,
+       "f": 769
+      },
+      {
+       "t": "punya",
+       "k": false,
+       "f": 775
+      },
+      {
+       "t": "corak",
+       "k": false,
+       "f": 785
+      }
+     ]
+    },
+    {
+     "f0": 802,
+     "f1": 842,
+     "words": [
+      {
+       "t": "dia",
+       "k": false,
+       "f": 802
+      },
+      {
+       "t": "macam",
+       "k": true,
+       "f": 811
+      },
+      {
+       "t": "sulam!",
+       "k": true,
+       "f": 823
+      }
+     ]
+    }
+   ],
+   "headlines": [
+    {
+     "f0": 801,
+     "f1": 842,
+     "main": "CORAK MACAM SULAM",
+     "sub": null,
+     "sfx": "pop",
+     "subDelay": 8
+    }
+   ],
+   "punch": [],
+   "sparkles": [
+    {
+     "x0": 560,
+     "y0": 1150,
+     "x1": 980,
+     "y1": 1800,
+     "f0": 795,
+     "f1": 842
+    }
+   ]
+  },
+  {
+   "id": "E",
+   "src": "v4",
+   "s": 36.12,
+   "e": 46.65333333333333,
+   "start": 842,
+   "frames": 316,
+   "tin": "whipR",
+   "kb": [
+    1.0,
+    1.06,
+    0.35,
+    0.55
+   ],
+   "captions": [
+    {
+     "f0": 842,
+     "f1": 893,
+     "words": [
+      {
+       "t": "Teal",
+       "k": false,
+       "f": 842
+      },
+      {
+       "t": "blue,",
+       "k": false,
+       "f": 852
+      },
+      {
+       "t": "cantik",
+       "k": true,
+       "f": 863
+      },
+      {
+       "t": "kan?",
+       "k": false,
+       "f": 877
+      }
+     ]
+    },
+    {
+     "f0": 893,
+     "f1": 941,
+     "words": [
+      {
+       "t": "Ni",
+       "k": false,
+       "f": 893
+      },
+      {
+       "t": "dua",
+       "k": true,
+       "f": 901
+      },
+      {
+       "t": "layer",
+       "k": true,
+       "f": 911
+      },
+      {
+       "t": "tau!",
+       "k": false,
+       "f": 924
+      }
+     ]
+    },
+    {
+     "f0": 941,
+     "f1": 999,
+     "words": [
+      {
+       "t": "Dia",
+       "k": false,
+       "f": 941
+      },
+      {
+       "t": "punya",
+       "k": false,
+       "f": 954
+      },
+      {
+       "t": "bunga,",
+       "k": false,
+       "f": 972
+      }
+     ]
+    },
+    {
+     "f0": 999,
+     "f1": 1057,
+     "words": [
+      {
+       "t": "bunga",
+       "k": false,
+       "f": 999
+      },
+      {
+       "t": "dia",
+       "k": false,
+       "f": 1010
+      },
+      {
+       "t": "kan",
+       "k": false,
+       "f": 1018
+      },
+      {
+       "t": "lawa,",
+       "k": true,
+       "f": 1026
+      },
+      {
+       "t": "cantik!",
+       "k": false,
+       "f": 1036
+      }
+     ]
+    },
+    {
+     "f0": 1057,
+     "f1": 1104,
+     "words": [
+      {
+       "t": "Bunga",
+       "k": false,
+       "f": 1057
+      },
+      {
+       "t": "dia",
+       "k": false,
+       "f": 1067
+      },
+      {
+       "t": "bunga-bunga",
+       "k": false,
+       "f": 1073
+      },
+      {
+       "t": "ros.",
+       "k": true,
+       "f": 1090
+      }
+     ]
+    },
+    {
+     "f0": 1104,
+     "f1": 1158,
+     "words": [
+      {
+       "t": "Ha",
+       "k": false,
+       "f": 1104
+      },
+      {
+       "t": "ni,",
+       "k": false,
+       "f": 1109
+      },
+      {
+       "t": "bunga-bunga",
+       "k": true,
+       "f": 1115
+      },
+      {
+       "t": "ros",
+       "k": true,
+       "f": 1133
+      },
+      {
+       "t": "tabur!",
+       "k": true,
+       "f": 1140
+      }
+     ]
+    }
+   ],
+   "headlines": [
+    {
+     "f0": 894,
+     "f1": 997,
+     "main": "2 LAYER",
+     "sub": null,
+     "sfx": "pop",
+     "subDelay": 8
+    },
+    {
+     "f0": 1104,
+     "f1": 1158,
+     "main": "BUNGA ROS TABUR",
+     "sub": null,
+     "sfx": "pop",
+     "subDelay": 8
+    }
+   ],
+   "punch": [
+    {
+     "f": 1104,
+     "z": 1.09,
+     "x": 0.2,
+     "y": 0.62,
+     "shake": false
+    }
+   ],
+   "sparkles": [
+    {
+     "x0": 40,
+     "y0": 800,
+     "x1": 360,
+     "y1": 1700,
+     "f0": 940,
+     "f1": 1156
+    }
+   ]
+  },
+  {
+   "id": "F",
+   "src": "v4",
+   "s": 23.85,
+   "e": 26.116666666666667,
+   "start": 1158,
+   "frames": 68,
+   "tin": "flash",
+   "kb": [
+    1.04,
+    1.0,
+    0.45,
+    0.6
+   ],
+   "captions": [
+    {
+     "f0": 1158,
+     "f1": 1226,
+     "words": [
+      {
+       "t": "Baby",
+       "k": false,
+       "f": 1158
+      },
+      {
+       "t": "blue,",
+       "k": false,
+       "f": 1168
+      },
+      {
+       "t": "batu",
+       "k": true,
+       "f": 1177
+      },
+      {
+       "t": "dia",
+       "k": true,
+       "f": 1187
+      },
+      {
+       "t": "warna",
+       "k": true,
+       "f": 1195
+      },
+      {
+       "t": "biru!",
+       "k": true,
+       "f": 1206
+      }
+     ]
+    }
+   ],
+   "headlines": [
+    {
+     "f0": 1159,
+     "f1": 1226,
+     "main": "BATU WARNA BIRU",
+     "sub": "Baby Blue",
+     "sfx": "pop",
+     "subDelay": 8
+    }
+   ],
+   "punch": [],
+   "sparkles": [
+    {
+     "x0": 120,
+     "y0": 900,
+     "x1": 760,
+     "y1": 1750,
+     "f0": 1158,
+     "f1": 1226
+    }
+   ]
+  },
+  {
+   "id": "G",
+   "src": "v4",
+   "s": 49.21,
+   "e": 56.843333333333334,
+   "start": 1226,
+   "frames": 229,
+   "tin": "whipU",
+   "kb": [
+    1.0,
+    1.05,
+    0.5,
+    0.55
+   ],
+   "captions": [
+    {
+     "f0": 1226,
+     "f1": 1266,
+     "words": [
+      {
+       "t": "Layer",
+       "k": true,
+       "f": 1226
+      },
+      {
+       "t": "pertama,",
+       "k": true,
+       "f": 1241
+      }
+     ]
+    },
+    {
+     "f0": 1266,
+     "f1": 1302,
+     "words": [
+      {
+       "t": "layer",
+       "k": true,
+       "f": 1266
+      },
+      {
+       "t": "yang",
+       "k": true,
+       "f": 1277
+      },
+      {
+       "t": "kedua.",
+       "k": true,
+       "f": 1286
+      }
+     ]
+    },
+    {
+     "f0": 1302,
+     "f1": 1358,
+     "words": [
+      {
+       "t": "Dia",
+       "k": false,
+       "f": 1302
+      },
+      {
+       "t": "dua-dua",
+       "k": true,
+       "f": 1310
+      },
+      {
+       "t": "sampai",
+       "k": true,
+       "f": 1324
+      },
+      {
+       "t": "hujung!",
+       "k": true,
+       "f": 1337
+      }
+     ]
+    },
+    {
+     "f0": 1358,
+     "f1": 1376,
+     "words": [
+      {
+       "t": "Dia",
+       "k": false,
+       "f": 1358
+      },
+      {
+       "t": "bukan",
+       "k": false,
+       "f": 1362
+      },
+      {
+       "t": "satu.",
+       "k": false,
+       "f": 1368
+      }
+     ]
+    },
+    {
+     "f0": 1376,
+     "f1": 1409,
+     "words": [
+      {
+       "t": "Biasa",
+       "k": false,
+       "f": 1376
+      },
+      {
+       "t": "satu",
+       "k": false,
+       "f": 1382
+      },
+      {
+       "t": "je",
+       "k": false,
+       "f": 1387
+      },
+      {
+       "t": "sampai",
+       "k": false,
+       "f": 1391
+      },
+      {
+       "t": "depan,",
+       "k": false,
+       "f": 1398
+      }
+     ]
+    },
+    {
+     "f0": 1409,
+     "f1": 1455,
+     "words": [
+      {
+       "t": "ini",
+       "k": true,
+       "f": 1409
+      },
+      {
+       "t": "dua-dua",
+       "k": true,
+       "f": 1416
+      },
+      {
+       "t": "sampai",
+       "k": true,
+       "f": 1428
+      },
+      {
+       "t": "depan!",
+       "k": true,
+       "f": 1439
+      }
+     ]
+    }
+   ],
+   "headlines": [
+    {
+     "f0": 1302,
+     "f1": 1455,
+     "main": "DUA-DUA SAMPAI HUJUNG",
+     "sub": "Layer pertama + layer kedua",
+     "sfx": "impact",
+     "subDelay": 8
+    }
+   ],
+   "punch": [
+    {
+     "f": 1302,
+     "z": 1.08,
+     "x": 0.5,
+     "y": 0.6,
+     "shake": true
+    }
+   ],
+   "sparkles": []
+  },
+  {
+   "id": "H",
+   "src": "v2",
+   "s": 54.61,
+   "e": 59.61,
+   "start": 1455,
+   "frames": 150,
+   "tin": "zoom",
+   "kb": [
+    1.04,
+    1.0,
+    0.55,
+    0.55
+   ],
+   "captions": [
+    {
+     "f0": 1455,
+     "f1": 1503,
+     "words": [
+      {
+       "t": "Design",
+       "k": false,
+       "f": 1455
+      },
+      {
+       "t": "pertama",
+       "k": false,
+       "f": 1463
+      },
+      {
+       "t": "yang",
+       "k": false,
+       "f": 1472
+      },
+      {
+       "t": "saya",
+       "k": false,
+       "f": 1478
+      },
+      {
+       "t": "pakai",
+       "k": false,
+       "f": 1484
+      },
+      {
+       "t": "ni,",
+       "k": false,
+       "f": 1491
+      }
+     ]
+    },
+    {
+     "f0": 1503,
+     "f1": 1536,
+     "words": [
+      {
+       "t": "design",
+       "k": false,
+       "f": 1503
+      },
+      {
+       "t": "Rafflesia.",
+       "k": true,
+       "f": 1515
+      }
+     ]
+    },
+    {
+     "f0": 1536,
+     "f1": 1584,
+     "words": [
+      {
+       "t": "Design",
+       "k": false,
+       "f": 1536
+      },
+      {
+       "t": "kedua,",
+       "k": false,
+       "f": 1547
+      },
+      {
+       "t": "design",
+       "k": false,
+       "f": 1556
+      },
+      {
+       "t": "Fiona,",
+       "k": true,
+       "f": 1567
+      }
+     ]
+    },
+    {
+     "f0": 1584,
+     "f1": 1605,
+     "words": [
+      {
+       "t": "macam",
+       "k": false,
+       "f": 1584
+      },
+      {
+       "t": "ni",
+       "k": false,
+       "f": 1591
+      },
+      {
+       "t": "akak!",
+       "k": false,
+       "f": 1596
+      }
+     ]
+    }
+   ],
+   "headlines": [
+    {
+     "f0": 1503,
+     "f1": 1605,
+     "main": "2 DESIGN",
+     "sub": "Rafflesia & Fiona",
+     "sfx": "pop",
+     "subDelay": 4
+    }
+   ],
+   "punch": [
+    {
+     "f": 1503,
+     "z": 1.08,
+     "x": 0.7,
+     "y": 0.7,
+     "shake": false
+    }
+   ],
+   "sparkles": [
+    {
+     "x0": 600,
+     "y0": 1150,
+     "x1": 1000,
+     "y1": 1800,
+     "f0": 1497,
+     "f1": 1605
+    }
+   ]
+  },
+  {
+   "id": "I",
+   "src": "v2",
+   "s": 39.06,
+   "e": 40.82666666666667,
+   "start": 1605,
+   "frames": 53,
+   "tin": "flash",
+   "kb": [
+    1.0,
+    1.05,
+    0.5,
+    0.5
+   ],
+   "captions": [
+    {
+     "f0": 1605,
+     "f1": 1658,
+     "words": [
+      {
+       "t": "Dalam",
+       "k": false,
+       "f": 1605
+      },
+      {
+       "t": "beg",
+       "k": true,
+       "f": 1612
+      },
+      {
+       "t": "kuning",
+       "k": true,
+       "f": 1618
+      },
+      {
+       "t": "kita",
+       "k": false,
+       "f": 1626
+      },
+      {
+       "t": "ada",
+       "k": false,
+       "f": 1632
+      },
+      {
+       "t": "dua",
+       "k": true,
+       "f": 1638
+      },
+      {
+       "t": "corak!",
+       "k": true,
+       "f": 1643
+      }
+     ]
+    }
+   ],
+   "headlines": [],
+   "punch": [],
+   "sparkles": []
+  }
+ ],
+ "cta": {
+  "src": "v4",
+  "s": 26.2,
+  "fast_src": 1.5,
+  "fast_out_frames": 30,
+  "slow_rate": 0.8,
+  "tin": "whipL",
+  "start": 1658,
+  "frames": 142
+ }
+}
