@@ -1,10 +1,10 @@
 """Original background music + SFX, synthesised from scratch (no third-party audio,
 so it is free for commercial use). 120 BPM, timed to the edit in timeline.py."""
-import sys, wave
+import os, subprocess, sys, wave
 import numpy as np
 
 sys.path.insert(0, __file__.rsplit("/", 1)[0])
-from timeline import TOTAL, BPM, SFX
+from timeline import TOTAL, BPM, SFX, VOICE
 
 SR = 44100
 N = int(SR * (TOTAL + 0.5))
@@ -244,8 +244,41 @@ def tick():
     return s / np.abs(s).max()
 
 
-def main(out):
+def load_voice(src):
+    """host speech from the raw clip: de-noise, de-rumble, gentle compression."""
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", src, "-vn", "-af",
+                          "highpass=f=85,afftdn=nr=10:nf=-40,equalizer=f=3000:t=q:w=1.2:g=2,"
+                          "acompressor=threshold=-22dB:ratio=3:attack=8:release=120:makeup=3",
+                          "-ac", "2", "-ar", str(SR), "-f", "f32le", "-"],
+                         capture_output=True, check=True).stdout
+    return np.frombuffer(raw, dtype=np.float32).reshape(-1, 2).T
+
+
+def voice_track(src):
+    v = load_voice(src)
+    out = np.zeros((2, N))
+    mask = np.zeros(N)
+    fade = int(0.015 * SR)
+    for s0, s1, t0 in VOICE:
+        seg = v[:, int(s0 * SR):int(s1 * SR)].copy()
+        ramp = np.linspace(0, 1, fade)
+        seg[:, :fade] *= ramp
+        seg[:, -fade:] *= ramp[::-1]
+        i = int(t0 * SR)
+        j = min(N, i + seg.shape[1])
+        out[:, i:j] += seg[:, : j - i]
+        mask[i:j] = 1
+    # smooth ducking envelope (150 ms ramps)
+    k = int(0.15 * SR)
+    mask = np.convolve(mask, np.ones(k) / k, mode="same")
+    return out, mask
+
+
+def main(out, src):
     mus = music()
+    voice, vmask = voice_track(src)
+    rms = np.sqrt(np.mean(voice[:, vmask > 0.9] ** 2)) + 1e-9
+    voice *= 0.12 / rms
     sfx = np.zeros((2, N))
     gen = {"whoosh": whoosh, "pop": pop, "sparkle": sparkle, "impact": impact, "tick": tick}
     cache = {}
@@ -259,22 +292,26 @@ def main(out):
     ir = reverb_ir(1.2, 5)
     for c in range(2):
         sfx[c] += convolve(sfx[c], ir[c]) * 0.12
-    mix = mus * 0.9 + sfx * 0.55
-    # fade out tail
-    tail = int(1.2 * SR)
+    mus = mus / np.abs(mus).max()
+    duck = 0.9 - 0.6 * vmask            # music sits ~15 dB under the voice
+    mix = voice + mus * 0.45 * duck + sfx * 0.22
     end = int(TOTAL * SR)
+    tail = int(0.8 * SR)
     mix[:, end - tail:end] *= np.linspace(1, 0, tail) ** 1.5
-    mix[:, end:] = 0
-    mix = mix[:, : end]
-    mix = np.tanh(mix / np.abs(mix).max() * 1.4) * 0.9
+    mix = mix[:, :end]
+    mix = mix / np.abs(mix).max() * 0.9
+    tmp = out + ".pre.wav"
     pcm = (mix.T * 32767).astype(np.int16)
-    with wave.open(out, "wb") as w:
+    with wave.open(tmp, "wb") as w:
         w.setnchannels(2)
         w.setsampwidth(2)
         w.setframerate(SR)
         w.writeframes(pcm.tobytes())
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", tmp, "-af",
+                    "loudnorm=I=-14:TP=-1.5:LRA=9", "-ar", str(SR), out], check=True)
+    os.remove(tmp)
     print("wrote", out)
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2])
