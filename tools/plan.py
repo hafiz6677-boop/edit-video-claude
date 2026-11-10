@@ -134,7 +134,47 @@ def build():
     cta_frames = TOTAL - f
     assert 90 <= cta_frames <= 180, cta_frames
     cta = dict(CTA, start=f, frames=cta_frames)
-    return dict(fps=FPS, total=TOTAL, segments=out, cta=cta)
+    return dict(fps=FPS, total=TOTAL, segments=out, cta=cta, sfx=sfx_timeline(out, cta))
+
+
+def sfx_timeline(segs, cta):
+    """Sound-effect cue list (frame, sound, volume) rendered by Remotion as <Audio> elements."""
+    ev = []
+    lead = {"whoosh": 9, "swoosh": 5, "riser": 9}
+    tin = {"whipL": "whoosh", "whipR": "whoosh", "whipU": "whoosh", "zoom": "swoosh", "flash": "riser"}
+    for s in segs[1:] + [cta]:
+        k = tin[s["tin"]]
+        ev.append((s["start"] - lead[k], k, 1.0, "transition"))
+    ev += [(0, "impact", 1.0, "hook"), (2, "sparkle", 1.0, "hook")]
+    for s in segs:
+        for h in s["headlines"]:
+            if h["f0"] > 3:
+                ev.append((h["f0"], h["sfx"], 0.9, "headline"))
+            if h["sub"] and h["subDelay"] > 12:
+                ev.append((h["f0"] + h["subDelay"], "pop", 0.5, "subline"))
+        for sp in s["sparkles"]:
+            if sp["f0"] > 3:
+                ev.append((sp["f0"] + 4, "sparkle", 1.0, "stones"))
+        for p in s["punch"]:
+            ev.append((p["f"] - 4, "swoosh", 0.7, "punch-in"))
+        for c in s["captions"]:  # soft pop when a yellow keyword appears
+            kw = [w for w in c["words"] if w["k"]]
+            if kw:
+                ev.append((kw[0]["f"], "pop", 0.35, "keyword"))
+    c0 = cta["start"]
+    ev += [(c0 + 10, "pop", 0.9, "cta"), (c0 + 19, "impact", 1.0, "cta"), (c0 + 19, "chime", 0.9, "cta"),
+           (c0 + 28, "pop", 0.9, "cta"), (c0 + 33, "sparkle", 1.0, "cta"), (c0 + 36, "swoosh", 0.5, "cta"),
+           (c0 + 80, "sparkle", 0.8, "cta")]
+    ev.sort()
+    kept, last_any, last = [], -99, {}
+    for f, k, v, why in ev:
+        if f < 0 or f - last.get(k, -99) < 10:
+            continue
+        if why == "keyword" and f - last_any < 12:
+            continue
+        last[k] = f; last_any = max(last_any, f)
+        kept.append(dict(f=f, sfx=f"{k}{len(kept) % 3}", vol=v, why=why))
+    return kept
 
 
 if __name__ == "__main__":
@@ -146,4 +186,5 @@ if __name__ == "__main__":
     for s in edl["segments"]:
         print(f'{s["id"]} {s["src"]} {s["s"]:6.2f}-{s["e"]:6.2f}  out {s["start"]/FPS:6.2f}-{(s["start"]+s["frames"])/FPS:6.2f}')
     c = edl["cta"]
+    print(len(edl["sfx"]), "sfx cues")
     print(f'CTA out {c["start"]/FPS:.2f}-{(c["start"]+c["frames"])/FPS:.2f}')

@@ -154,7 +154,15 @@ def riser():
     return norm(np.stack([x, x], 1), 0.14)
 
 
-SFX = dict(whoosh=whoosh, swoosh=swoosh, pop=pop, sparkle=sparkle, impact=impact, riser=riser)
+def chime():
+    t = t_(1.4); x = np.zeros(len(t))
+    for f, a in ((1318.5, 1.0), (1975.5, 0.6), (2637, 0.35), (3951, 0.15)):
+        x += a * np.sin(2 * np.pi * f * t) * np.exp(-t * (3 + f / 900))
+    x[: int(0.003 * SR)] *= np.linspace(0, 1, int(0.003 * SR))
+    return norm(np.stack([x, x], 1), 0.2)
+
+
+SFX = dict(whoosh=whoosh, swoosh=swoosh, pop=pop, sparkle=sparkle, impact=impact, riser=riser, chime=chime)
 
 
 def music():
@@ -209,68 +217,38 @@ def music():
     return x / np.max(np.abs(x))
 
 
+def export_sfx():
+    """Write every SFX as its own WAV in public/sfx; Remotion places them on the timeline."""
+    d = os.path.join(PUB, "sfx"); os.makedirs(d, exist_ok=True)
+    for name, fn in SFX.items():
+        for k in range(3):  # 3 random variants per type so repeats never sound identical
+            sf.write(os.path.join(d, f"{name}{k}.wav"), fn().astype(np.float32), SR)
+
+
 def main():
     cut_video()
+    export_sfx()
     v = voice()
     n = len(v)
-    mix = np.stack([v, v], 1).astype(np.float64)
+    bed = np.stack([v, v], 1).astype(np.float64)
 
-    # ---- music bed with automatic ducking under the host's speech
+    # music bed with automatic ducking under the host's speech
     mus = music()[:n]
     speech_end = edl["cta"]["start"] / FPS
     tt = np.arange(n) / SR
-    # voice activity from the processed voice envelope (50 ms window)
     w = int(0.05 * SR); e = np.sqrt(np.convolve(v ** 2, np.ones(w) / w, "same"))
     active = (e > 10 ** (-38 / 20)).astype(float)
     active = np.convolve(active, np.ones(int(0.4 * SR)) / int(0.4 * SR), "same") > 0.05
     g = np.where(active, 10 ** (-27 / 20), 10 ** (-17 / 20))
     g = np.where(tt >= speech_end, 10 ** (-9 / 20), g)
-    g = lp(g.astype(np.float64), 4.0)  # smooth gain changes (~40 ms)
+    g = lp(g.astype(np.float64), 4.0)
     g *= np.clip(tt / 0.6, 0, 1) * np.clip((DUR - tt) / 1.2, 0, 1)
-    mix += mus * g[:, None]
-
-    # ---- sound effects timeline
-    events = []
-    segs = edl["segments"]
-    tin_sfx = {"whipL": "whoosh", "whipR": "whoosh", "whipU": "whoosh", "zoom": "swoosh", "flash": "riser"}
-    for s in segs[1:] + [edl["cta"]]:
-        typ = tin_sfx[s["tin"]]
-        lead = {"whoosh": 0.31, "swoosh": 0.18, "riser": 0.30}[typ]
-        events.append((s["start"] / FPS - lead, typ))
-    events.append((0.0, "impact")); events.append((0.05, "sparkle"))
-    for s in segs:
-        for h in s["headlines"]:
-            if h["f0"] > 3:
-                events.append((h["f0"] / FPS, h["sfx"]))
-        for sp in s["sparkles"]:
-            if sp["f0"] > 3:
-                events.append((sp["f0"] / FPS + 0.15, "sparkle"))
-        for p in s["punch"]:
-            events.append((p["f"] / FPS - 0.12, "swoosh"))
-    c0 = edl["cta"]["start"] / FPS
-    events += [(c0 + 0.35, "pop"), (c0 + 0.65, "impact"), (c0 + 0.95, "pop"), (c0 + 1.1, "sparkle"), (c0 + 2.6, "sparkle")]
-    events.sort()
-    last = {}
-    used = []
-    for t, k in events:
-        if t < 0 or t - last.get(k, -9) < 0.35:
-            continue
-        last[k] = t; used.append((round(t, 3), k))
-        x = SFX[k](); i = int(t * SR); m = min(len(x), n - i)
-        if m > 0:
-            mix[i:i + m] += x[:m] * (0.85 if k in ("pop", "swoosh") else 1.0)
-    json.dump(used, open(os.path.join(TMP, "sfx_events.json"), "w"))
-
-    pre = os.path.join(TMP, "mix_pre.wav"); sf.write(pre, mix.astype(np.float32), SR, subtype="FLOAT")
-    final = os.path.join(PUB, "mix.wav")
-    stats = subprocess.run(["ffmpeg", "-i", pre, "-af", "loudnorm=I=-14:TP=-1.5:LRA=9:print_format=json", "-f", "null", "-"],
-                           capture_output=True, text=True).stderr
-    j = json.loads(stats[stats.rindex("{"):stats.rindex("}") + 1])
-    run(["ffmpeg", "-y", "-i", pre, "-af",
-         f"loudnorm=I=-14:TP=-1.5:LRA=9:measured_I={j['input_i']}:measured_TP={j['input_tp']}:measured_LRA={j['input_lra']}:"
-         f"measured_thresh={j['input_thresh']}:offset={j['target_offset']}:linear=true,alimiter=limit=0.84:level=false",
-         "-ar", str(SR), "-c:a", "pcm_s16le", "-t", f"{DUR}", final])
-    print("sfx events:", len(used))
+    bed += mus * g[:, None]
+    # voice + music at -16 LUFS; SFX are layered on top inside Remotion
+    pre = os.path.join(TMP, "bed_pre.wav"); sf.write(pre, bed.astype(np.float32), SR, subtype="FLOAT")
+    run(["ffmpeg", "-y", "-i", pre, "-af", "volume=0dB", "-ar", str(SR), "-c:a", "pcm_s16le",
+         "-t", f"{DUR}", os.path.join(PUB, "bed.wav")])
+    print("bed + sfx exported")
 
 
 if __name__ == "__main__":

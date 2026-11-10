@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  AbsoluteFill, OffthreadVideo, Sequence, continueRender, delayRender, interpolate, random,
+  AbsoluteFill, Audio, OffthreadVideo, Sequence, continueRender, delayRender, interpolate, random,
   spring, staticFile, useCurrentFrame, useVideoConfig, Easing,
 } from "remotion";
 import "@fontsource/anton/400.css";
@@ -270,6 +270,19 @@ const Brand: React.FC = () => {
   );
 };
 
+// ---------------------------------------------------------------- sound
+// Host voice + ducked music bed, plus every sound effect placed on its cue frame.
+const SoundTrack: React.FC = () => (
+  <>
+    <Audio src={staticFile("bed.wav")} />
+    {edl.sfx.map((c, i) => (
+      <Sequence key={`sfx${i}`} from={c.f} durationInFrames={Math.min(60, edl.total - c.f)} name={`sfx ${c.why}`}>
+        <Audio src={staticFile(`sfx/${c.sfx}.wav`)} volume={c.vol} />
+      </Sequence>
+    ))}
+  </>
+);
+
 // ---------------------------------------------------------------- main
 export const FizimaAd: React.FC = () => {
   const [handle] = useState(() => delayRender("fonts"));
@@ -284,6 +297,7 @@ export const FizimaAd: React.FC = () => {
   const segs = edl.segments;
   return (
     <AbsoluteFill style={{ backgroundColor: "#000" }}>
+      <SoundTrack />
       {segs.map((s, i) => (
         <Sequence key={s.id} from={s.start} durationInFrames={s.frames}>
           <SegmentVideo seg={s} file={`seg_${s.id}.mp4`} tout={i + 1 < segs.length ? segs[i + 1].tin : edl.cta.tin} />
